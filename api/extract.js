@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   if (!url) return res.status(400).json({ error: 'URL é obrigatória' });
   try {
     const resp = await fetch(url);
-    if (!resp.ok) throw new Error('Falha ao buscar a página');
+    if (!resp.ok) throw new Error('Erro ao buscar a página');
     const html = await resp.text();
     const $ = cheerio.load(html);
     const links = [];
