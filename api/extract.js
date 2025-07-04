@@ -4,10 +4,11 @@ const cheerio = require('cheerio');
 module.exports = async (req, res) => {
   const url = req.query.url;
   if (!url) return res.status(400).json({ error: 'URL é obrigatória' });
+
   try {
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error('Erro ao buscar a página');
-    const html = await resp.text();
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Erro ao buscar a página');
+    const html = await response.text();
     const $ = cheerio.load(html);
     const links = [];
 
@@ -23,7 +24,7 @@ module.exports = async (req, res) => {
     });
 
     res.json({ links: [...new Set(links)] });
-  } catch(err) {
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
