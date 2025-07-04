@@ -1,0 +1,13 @@
+{
+  "name": "my-goyabu-extractor",
+  "version": "1.0.0",
+  "main": "api/extract.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "license": "MIT"
+}
