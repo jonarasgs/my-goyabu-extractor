@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Goyabu Extractor</title>
-</head>
-<body style="font-family: sans-serif; padding: 2rem;">
-  <h1>🔍 Extração Goyabu</h1>
+<head><meta charset="UTF-8"><title>Goyabu Extractor</title></head>
+<body style="font-family:sans-serif;padding:2rem">
+  <h1>🔍 Extrair links do Goyabu</h1>
   <input id="url" placeholder="https://goyabu.to/..." size="50"/>
   <button onclick="buscar()">Buscar</button>
-  <pre id="saida" style="margin-top:1rem; background:#f0f0f0; padding:1rem;"></pre>
-
+  <pre id="saida" style="margin-top:1rem;background:#f0f0f0;padding:1rem"></pre>
   <script>
     async function buscar(){
       const url = document.getElementById('url').value;
@@ -17,10 +13,11 @@
       try {
         const resp = await fetch('/api/extract?url='+encodeURIComponent(url));
         const json = await resp.json();
-        document.getElementById('saida').textContent = json.error ? 
-          'Erro: '+json.error : JSON.stringify(json, null, 2);
+        document.getElementById('saida').textContent = json.error ?
+          'Erro: ' + json.error :
+          JSON.stringify(json, null, 2);
       } catch(e){
-        document.getElementById('saida').textContent = 'Erro de rede: '+e.message;
+        document.getElementById('saida').textContent = 'Erro de rede: ' + e.message;
       }
     }
   </script>
